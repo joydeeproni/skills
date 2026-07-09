@@ -17,6 +17,15 @@ npx skills add joydeeproni/skills/ux-case-study
 
 ## Skills
 
+### `this-doesnt-look-good`
+
+Turns vague design/UX feedback into actionable direction. Triggers on any non-specific
+complaint — *"this looks bad"*, *"make it prettier"*, *"improve the ux"* — and **stops before
+touching code** to interrogate the feedback through seven lenses (hesitation, expectation gaps,
+emotion, what's missing, what's assumed, how it looks, how it feels), reframe the problem
+(add/remove a constraint, invert it), synthesize concrete problem→fix pairs, and confirm before
+implementing. Skips itself when the instruction is already specific (*"change font to 14px"*).
+
 ### `ux-case-study`
 
 Grows a single long-form, editorial **UX case study** in Notion from a repo's commit history.
