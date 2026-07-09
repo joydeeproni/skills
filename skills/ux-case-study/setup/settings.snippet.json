@@ -1,5 +1,5 @@
 {
-  "//": "Merge this into .claude/settings.json to nudge the assistant after each git commit.",
+  "//": "Merge into .claude/settings.json (hook) and .claude/settings.local.json (permissions). The permissions.allow rules keep the skill from prompting on its routine, safe operations — read-only git, the two Notion calls, and the deterministic bookkeeping commands. Notion writes go to YOUR page; drop notion-update-page from allow if you'd rather confirm each write.",
   "hooks": {
     "PostToolUse": [
       {
@@ -13,6 +13,19 @@
           }
         ]
       }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(git show:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(cat .claude/casestudy/pending-commits.txt)",
+      "Bash(cat .claude/casestudy/processed-commits.txt)",
+      "Bash(cat .claude/casestudy/pending-commits.txt >> .claude/casestudy/processed-commits.txt)",
+      "Bash(: > .claude/casestudy/pending-commits.txt)",
+      "mcp__claude_ai_Notion__notion-fetch",
+      "mcp__claude_ai_Notion__notion-update-page"
     ]
   }
 }

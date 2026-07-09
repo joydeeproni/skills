@@ -42,9 +42,13 @@ resource `notion://docs/enhanced-markdown-spec`.
 2. Copy `config.example.json` → `.claude/casestudy/config.json` and fill it in.
 3. Install `setup/git-post-commit.sh` as `.git/hooks/post-commit` (chmod +x). It records every
    commit hash to `pending-commits.txt` — even commits made outside a Claude Code session.
-4. (Optional) Wire the Claude Code nudge: copy `setup/claude-post-tool-commit.sh` into
-   `.claude/hooks/` and merge `setup/settings.snippet.json` into `.claude/settings.json` so the
-   assistant is reminded to run this skill after each `git commit`.
+4. (Optional) Wire the Claude Code nudge and cut permission prompts: copy
+   `setup/claude-post-tool-commit.sh` into `.claude/hooks/`, then from
+   `setup/settings.snippet.json` merge the `hooks` block into `.claude/settings.json` (reminds
+   the assistant after each `git commit`) and the `permissions.allow` block into
+   `.claude/settings.local.json` (stops the skill prompting on its routine, safe operations —
+   read-only git, the two Notion calls, and the deterministic bookkeeping in step 7). The
+   bookkeeping commands are fixed strings, so allow-listing them once holds forever.
 5. Create or choose the Notion page and put its ID in `config.json`.
 
 ## The Workflow (each time this skill is invoked)
@@ -64,8 +68,15 @@ resource `notion://docs/enhanced-markdown-spec`.
 6. **Note visuals.** Where a change has a visible before/after, leave an inline placeholder
    `> 📸 *Screenshot: <what to capture> — to add*` and, in your reply, tell the user exactly
    which screen to grab. Capture it yourself if a dev server / screenshot path is available.
-7. **Mark processed.** Append handled hashes to `processed-commits.txt` and truncate
-   `pending-commits.txt`. Never process the same commit into two sections.
+7. **Mark processed.** Move the pending commits into the processed log with these two *exact*
+   commands — never type individual hashes (a per-hash command is a new string every run, so it
+   forces a fresh permission prompt each time and bloats the allowlist):
+   ```
+   cat .claude/casestudy/pending-commits.txt >> .claude/casestudy/processed-commits.txt
+   : > .claude/casestudy/pending-commits.txt
+   ```
+   This records every pending commit as processed (UX-relevant or not) and clears the queue.
+   Never process the same commit into two sections.
 8. **Report.** Tell the user what section you added and link the page.
 
 ## Asking for design rationale
