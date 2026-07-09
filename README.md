@@ -12,8 +12,12 @@ npx skills add joydeeproni/skills
 or a single skill:
 
 ```sh
-npx skills add joydeeproni/skills/ux-case-study
+npx skills add joydeeproni/skills --skill this-doesnt-look-good
 ```
+
+Add `--global` to install at user level (available in every project) instead of just the
+current one. `npx skills add joydeeproni/skills --list` shows what's in the repo without
+installing.
 
 ## Skills
 
