@@ -1,0 +1,7 @@
+{
+  "product": "My Product",
+  "notionPageId": "00000000000000000000000000000000",
+  "notionWorkspace": "you@example.com",
+  "author": "@you",
+  "watchPaths": ["src/", "*.css", "index.html"]
+}
