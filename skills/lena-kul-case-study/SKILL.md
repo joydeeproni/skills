@@ -1,6 +1,6 @@
 ---
 name: lena-kul-case-study
-version: 1.1.0
+version: 1.2.0
 description: >
   MUST trigger when writing, rewriting, reviewing, or structuring a product design
   or UX research case study, portfolio project, or application-stage write-up.
@@ -9,8 +9,11 @@ description: >
   "case study skeleton", "application case study", "portfolio deep dive",
   "I'm not getting interviews", "fix my case study", "help me present this project".
   Also trigger when the user drops screenshots, Figma links, or a vague project
-  idea and wants a case study from it. Do NOT trigger for the repo's commit-to-Notion
-  ux-case-study workflow, or for generic UI polish with no case-study intent.
+  idea and wants a case study from it. Interview with native multiple-choice
+  (AskUserQuestion / AskQuestion / ask_user_question / CLI A–D), ONE question per
+  turn; propose probable write-up after each beat. NEVER dump an essay questionnaire.
+  Do NOT trigger for the repo's commit-to-Notion ux-case-study workflow, or for
+  generic UI polish with no case-study intent.
 ---
 
 # Lena Kul Case Study Framework
@@ -39,7 +42,10 @@ about *their* project.
 
 ---
 
-**STOP. Do not draft the case study yet.**
+**STOP. Do not assemble a full case study yet.** Interview with native pickers
+(`interactive-intake.md`). You *will* propose short write-ups beat by beat.
+
+Hiring teams scan. They do not reconstruct your thinking from pretty screens.
 
 Hiring teams scan. They do not reconstruct your thinking from pretty screens.
 This skill writes case studies as a **hiring narrative** — stage, problem, ownership,
@@ -62,7 +68,8 @@ existing write-up.
 
 ## Two versions (pick one first)
 
-Ask which artifact they need. Default to **application** if they are applying or
+Ask which artifact they need **with the native one-question picker** (see
+`interactive-intake.md`). Default to **application** if they are applying or
 "not getting callbacks." Default to **deep dive** if they have an interview or
 portfolio walkthrough.
 
@@ -166,101 +173,89 @@ learned. What you would do differently. Optional next steps.
 
 ## Hard rules
 
-1. **Grill before you write.** Vague idea or screenshots ≠ a case study. Interview
-   until the skeleton can be filled without invention.
-2. **Never fabricate** metrics, quotes, insights, stakeholders, or "I owned X."
+1. **Help them write — don't make them write an essay.** Intake is **one native
+   multiple-choice question per turn**, then a **probable write-up** they tap to
+   keep or refine. Follow `interactive-intake.md`. Never dump 5–12 open questions.
+2. **Use the workspace / CLI picker.** Claude Code: `AskUserQuestion`. Cursor:
+   `AskQuestion`. Codex: `ask_user_question`. If the tool is missing: lettered
+   A–D in chat. Never prefer a wall of prose over a picker that exists.
+3. **Refine in public.** After each confirmed beat, update the running draft and
+   rewrite earlier slots if new answers contradict them. Change the *next*
+   question when they reject your guesses — don't reshuffle the same three options.
+4. **Never fabricate** metrics, quotes, insights, stakeholders, or "I owned X."
    Mark gaps; ask; or write "unmeasured — signal was…"
-3. **Role ≠ deliverables.** Ban "I created wireframes / user flows / a design system"
+5. **Role ≠ deliverables.** Ban "I created wireframes / user flows / a design system"
    as the role section unless ownership and influence sit next to them.
-4. **Impact ≠ outcomes.** If they collapse the two, separate them.
-5. **Direction before decoration.** Do not lead with final UI.
-6. **Few screens, annotated.** Suggest shots; refuse a gallery dump.
-7. **Insights, not plans.** No full research protocol in the study.
-8. **Mix and match.** Drop a part only if the narrative still lands; never drop
-   **role** or **impact** (or impact *signals*).
-9. **Write for a stranger.** Assume the reader has never seen the product.
+6. **Impact ≠ outcomes.** If they collapse the two, separate them.
+7. **Direction before decoration.** Do not lead with final UI.
+8. **Few screens, annotated.** Suggest shots via picker; refuse a gallery dump.
+9. **Insights, not plans.** No full research protocol in the study.
+10. **Mix and match.** Drop a part only if the narrative still lands; never drop
+    **role** or **impact** (or impact *signals*).
+11. **Write for a stranger.** Assume the reader has never seen the product.
 
 ---
 
 ## Workflow
 
-### Step 0 — Classify the ask
+### Step 0 — Classify the ask (one picker each, skip if known)
 
 1. **Discipline:** product design vs research vs hybrid (changes part 7).
 2. **Version:** application (1–5) vs deep dive (1–9).
 3. **Input quality:** complete story / partial / screenshots only / existing weak study.
 
-If they pasted an old case study, diagnose against the skeleton first (what's
-missing: stage, ownership, impact, direction-before-UI, too many screens) — then
-grill only the holes.
+If they pasted an old case study, diagnose against the skeleton in one short
+scorecard (what’s missing), then picker only the holes — never a full form.
 
-### Step 1 — Intake interview (mandatory unless already answered)
+### Step 1 — Interactive intake (mandatory)
 
-Do **not** dump every question. Run **one focused round**, then a second only for
-holes.
+**Read and follow `interactive-intake.md`.** That file is the interview.
 
-**Round size:** 5–8 questions for application; 8–12 if they already want a deep dive.
-Prefer discrete options when the answer is a choice; otherwise short prose questions
-grounded in whatever they already gave (a screenshot, a product name, a metric rumor).
+Do **not** ask them to reply with an essay. Sequence:
 
-If they only dropped images: start from what is visible ("this looks like a checkout
-redesign") and interrogate stakes, ownership, and impact — the pictures never contain
-those.
+1. Native picker — **one** skeleton beat (options inferred from what they already said).
+2. You write the **probable copy** for that beat (2–5 sentences, hiring voice).
+3. Native picker — keep / shorter / more senior / facts are wrong.
+4. Merge into the running draft; rewrite earlier beats if needed; next beat.
 
-#### Round A — Application (parts 1–5)
+Beat order and host tools (Claude `AskUserQuestion`, Cursor `AskQuestion`,
+Codex `ask_user_question`, CLI A–D) live in `interactive-intake.md`.
 
-**Stage**
-- What does the company/product actually do, in one sentence a recruiter hasn't heard?
-- Why did this problem matter *now* (timing, threat, market, regulation, revenue, churn)?
-- If you had shipped nothing, what would have gotten worse — for the user and for the business?
-- Where did user need and business need pull in opposite directions?
+The lists below are **what each beat must eventually contain**, not a form to paste
+into chat.
 
-**Problem**
-- State the **user** problem and the **business** problem separately.
-- What did you (or the team) assume at the start?
-- What did you not know?
-- What assumption died? What was wrong?
+If they only dropped images: first picker is what the pictures appear to be; then
+stakes, ownership, impact — pictures never contain those.
 
-**Role**
-- What did you own end-to-end vs contribute to?
-- Who else was in the room (PM, eng, research, leadership) and where did you influence them?
-- What was in scope / out of scope — and who set that? Did you initiate or re-scope anything?
-- If we removed you, what would not have happened?
+#### Application beats (parts 1–5) — fill via pickers, not a questionnaire
 
-**Direction**
-- In one sentence, what direction did you choose *instead of* the obvious alternative?
-- What did you explicitly *not* do?
+**Stage:** company in recruiter English; why it mattered *now*; threat if unsolved;
+user vs business tension.
 
-**Impact**
-- What changed for users? For the business?
-- Any number, even directional (% , time saved, tickets deflected, conversion, NPS, qualitative saturation)?
-- If unmeasured: what signal did you see? Risk avoided? Opportunity created? Process that got faster?
-- What did *you* change your mind about?
+**Problem:** user problem and business problem separately; assumption; knowledge gap;
+what turned out to be wrong.
 
-#### Round B — Deep dive only (parts 6–9)
+**Role:** owned vs contributed; influence; scope; initiation — not a tool list.
 
-**Approach**
-- What were the 1–3 hypotheses you tested?
-- Which concepts failed, and why did you kill them?
-- Key insight from research — one paragraph, not the discussion guide.
-- Who pushed back, and what trade-off did you make?
-- Tightest constraints (time, access, tech, brand, legal, headcount) and the workaround.
+**Direction:** the bet vs the obvious alternative; what you did not do.
 
-**Solution**
-- What is the "final" — shipped UI, prototype, research program, or strategy change?
-- Which **2–4 moments** in the product actually changed? (We will screenshot those, not everything.)
+**Impact:** users / business / you / process / unlearned / risk or opportunity;
+number or honest unmeasured signal.
 
-**Outcomes vs impact**
-- What exists now that didn't (outcome)?
-- What needle did that move (impact)? If the needle wasn't measured, say so and keep the signal.
+#### Deep-dive beats (parts 6–9) — only after 1–5 are confirmed in the running draft
 
-**Reflection**
-- How did you lead (facilitation, decision, influence without authority)?
-- What would you do differently with the same constraints?
-- What did you learn that you reuse now?
-- Sensible next step if you had stayed?
+**Approach:** hypotheses, trade-offs, failed concepts, stakeholders, key insight
+(not the research plan), constraints and workaround.
 
-### Step 2 — Gate: do not write until the minimum is present
+**Solution:** shipped UI / prototype / research decision; 2–4 annotated moments.
+
+**Outcomes vs impact:** what exists now vs the needle that moved.
+
+**Reflection:** how you led; learned; would do differently; next step.
+
+### Step 2 — Gate: do not assemble the full piece until the minimum is present
+
+Probable copy per beat is allowed. A polished end-to-end case study is not, until:
 
 | Must-have before drafting | Application | Deep dive |
 |---|---|---|
@@ -277,12 +272,14 @@ those.
 If the user refuses impact entirely: write the rest, put a hard placeholder, and
 tell them hiring managers will bounce here. Do not invent a 23% lift.
 
-If they don't know their role: keep grilling. A case study with no ownership is a
-team brochure.
+If they don't know their role: keep the role picker going with sharper forks. A case
+study with no ownership is a team brochure.
 
-### Step 3 — Ask for artifacts (same turn as remaining questions)
+### Step 3 — Artifacts (picker, not a shopping list)
 
-Request files, not vibes. Be specific about **what the frame should contain**.
+After a beat is confirmed, if a visual would prove it, **one** screenshot picker
+with 2–3 specific frames + “none yet.” Request files, not vibes. Be specific about
+**what the frame should contain**.
 
 Always useful:
 - One-line product / company context if not public
@@ -316,7 +313,10 @@ journey maps unless one crop proves a single point, raw FigJam boards, research 
 If they have a working prototype or prod URL, prefer a **short recording** of the
 changed path over a PNG dump.
 
-### Step 4 — Write
+### Step 4 — Write (assemble, don’t surprise them)
+
+You have been writing all along (running draft). This step is **assemble + tighten**
+using **Voice** and the version template — not the first time they see prose.
 
 Follow **Voice** and the version template below. After the draft, list:
 - skeleton parts filled vs still thin
@@ -426,19 +426,24 @@ If the user didn't provide the asset yet, keep the placeholder and the capture b
 
 ## If the user is stuck
 
+Still use **one picker**, with options that name the fork. Do not lecture and wait.
+
 | They say | You do |
 |---|---|
-| "I just have screens" | Infer the product, then Round A. Do not caption pretty UI as impact. |
-| "We didn't track anything" | Hunt signals: qualitative change, risk not taken, cycle time, stakeholder decision, what you unlearned. |
-| "It was a group project" | Split owned vs influenced. Hiring is about *their* slice. |
-| "It was a class / concept" | Stage = the brief's real-world analogue; impact = what you proved, unlearned, or would instrument; don't fake revenue. |
-| "I'm a researcher, nothing shipped" | Part 7 = decision, new question, or direction change. Part 8 = what the org did with it. |
-| Existing study is visual-first | Rebuild order: stage → problem → role → direction → impact, then attach 2–3 annotated screens. |
+| "I just have screens" | Picker: what the pictures are. Do not caption pretty UI as impact. |
+| "We didn't track anything" | Picker of *signal types*: qualitative change, risk not taken, cycle time, decision you unblocked, what you unlearned. |
+| "It was a group project" | Picker: owned vs influenced vs initiated. Hiring is about *their* slice. |
+| "It was a class / concept" | Stage = real-world analogue; impact picker = proved / unlearned / would instrument — don't fake revenue. |
+| "I'm a researcher, nothing shipped" | Part 7 picker: decision, new question, or direction change. |
+| Existing study is visual-first | Rebuild via pickers in order: stage → problem → role → direction → impact. |
 
 ---
 
 ## Done looks like
 
+- Intake used native one-question pickers (or A–D fallback), not an essay form
+- Each skeleton slot was offered as probable copy and confirmed or refined
+- Running draft was updated as they tapped — later answers rewrote earlier slots when needed
 - Version chosen (application vs deep dive)
 - No invented facts
 - Role is ownership, not tools
