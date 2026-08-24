@@ -21,6 +21,16 @@ installing.
 
 ## Skills
 
+### `lena-kul-case-study`
+
+Writes product-design and UX-research **portfolio case studies** using the Lena Kul
+Case Study Framework. Stops on vague ideas or screenshot dumps and interviews for
+stage, problem, ownership, direction, and impact (application: parts 1–5) plus
+approach, annotated solution, outcomes-vs-impact, and reflection (deep dive: 1–9).
+Asks for artifacts and names the few screenshots that should appear — not a visual
+gallery. Use this for hiring narratives; use `ux-case-study` for the commit-to-Notion
+product essay.
+
 ### `this-doesnt-look-good`
 
 Turns vague design/UX feedback into actionable direction. Triggers on any non-specific
