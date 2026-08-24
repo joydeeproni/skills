@@ -23,13 +23,21 @@ installing.
 
 ### `lena-kul-case-study`
 
-Writes product-design and UX-research **portfolio case studies** using the Lena Kul
-Case Study Framework. Stops on vague ideas or screenshot dumps and interviews for
-stage, problem, ownership, direction, and impact (application: parts 1–5) plus
-approach, annotated solution, outcomes-vs-impact, and reflection (deep dive: 1–9).
-Asks for artifacts and names the few screenshots that should appear — not a visual
-gallery. Use this for hiring narratives; use `ux-case-study` for the commit-to-Notion
-product essay.
+Writes product-design and UX-research **portfolio case studies** using the **Lena Kul
+Case Study Framework** — created by [Lena Kul](https://www.youtube.com/@LenaKul).
+Source: *[Why Your Portfolio Fails | For Product Design and UXR](https://www.youtube.com/watch?v=vffNnpoWaeA)*.
+[Subscribe on YouTube](https://www.youtube.com/@LenaKul) (same video:
+https://www.youtube.com/watch?v=vffNnpoWaeA). Full credits:
+`skills/lena-kul-case-study/CREDITS.md`.
+
+Stops on vague ideas or screenshot dumps. Interviews **one native multiple-choice
+question at a time** (Claude `AskUserQuestion`, Cursor `AskQuestion`, Codex
+`ask_user_question`, or CLI A–D), then proposes a probable write-up for that skeleton
+slot and lets the user tap keep / shorter / more senior / wrong. The draft refines
+itself as answers land. Application is parts 1–5; deep dive adds approach, annotated
+solution, outcomes-vs-impact, and reflection. Asks for a few specific screenshots —
+not a gallery. Use this for hiring narratives; use `ux-case-study` for the
+commit-to-Notion product essay. Protocol: `skills/lena-kul-case-study/interactive-intake.md`.
 
 ### `this-doesnt-look-good`
 
